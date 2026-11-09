@@ -5,6 +5,6 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: "node",
-    coverage: { reporter: ["text", "lcov"], include: ["src/lib/**"] },
+    coverage: { reporter: ["text", "lcov"], include: ["src/lib/**"], exclude: ["src/lib/**/*.test.js"] },
   },
 });
