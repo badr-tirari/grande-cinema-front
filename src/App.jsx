@@ -3,6 +3,7 @@ import { useAuth } from "./auth";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import MovieDetail from "./pages/MovieDetail";
+import MyBookings from "./pages/MyBookings";
 import Register from "./pages/Register";
 import ShowtimePage from "./pages/ShowtimePage";
 import Ticket from "./pages/Ticket";
@@ -36,6 +37,7 @@ function Header() {
         <NavLink to="/" end>
           À l'affiche
         </NavLink>
+        {user && <NavLink to="/mes-reservations">Mes billets</NavLink>}
         {user ? (
           <button type="button" className="link-button" onClick={signOut} title={user.email}>
             Déconnexion
@@ -61,6 +63,7 @@ export default function App() {
           <Route path="/seances/:id" element={<ShowtimePage />} />
           <Route path="/connexion" element={<Login />} />
           <Route path="/inscription" element={<Register />} />
+          <Route path="/mes-reservations" element={<RequireAuth><MyBookings /></RequireAuth>} />
           <Route path="/billets/:id" element={<RequireAuth><Ticket /></RequireAuth>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
