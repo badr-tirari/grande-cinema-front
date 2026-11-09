@@ -41,7 +41,7 @@ export default function Login() {
         <input type="password" autoComplete="current-password" required value={password}
           onChange={(e) => setPassword(e.target.value)} />
       </label>
-      <button className="primary" disabled={busy}>{busy ? "Connexion…" : "Se connecter"}</button>
+      <button type="submit" className="primary" disabled={busy}>{busy ? "Connexion…" : "Se connecter"}</button>
       <p className="muted small">
         Pas encore de compte ? <Link to="/inscription" state={location.state}>Créer un compte</Link>
       </p>
