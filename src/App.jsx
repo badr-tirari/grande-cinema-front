@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import MovieDetail from "./pages/MovieDetail";
 import Register from "./pages/Register";
+import ShowtimePage from "./pages/ShowtimePage";
 
 function RequireAuth({ admin = false, children }) {
   const { user, ready } = useAuth();
@@ -56,6 +57,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/films/:id" element={<MovieDetail />} />
+          <Route path="/seances/:id" element={<ShowtimePage />} />
           <Route path="/connexion" element={<Login />} />
           <Route path="/inscription" element={<Register />} />
           <Route path="*" element={<Navigate to="/" replace />} />
