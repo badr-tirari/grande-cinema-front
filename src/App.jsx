@@ -7,6 +7,7 @@ import MyBookings from "./pages/MyBookings";
 import Register from "./pages/Register";
 import ShowtimePage from "./pages/ShowtimePage";
 import Ticket from "./pages/Ticket";
+import AdminBookings from "./pages/admin/AdminBookings";
 import AdminProgramming from "./pages/admin/AdminProgramming";
 
 function RequireAuth({ admin = false, children }) {
@@ -42,6 +43,7 @@ function Header() {
         {user?.role === "ADMIN" && (
           <>
             <NavLink to="/admin/programmation">Programmation</NavLink>
+            <NavLink to="/admin/reservations">Réservations</NavLink>
           </>
         )}
         {user ? (
@@ -72,6 +74,7 @@ export default function App() {
           <Route path="/mes-reservations" element={<RequireAuth><MyBookings /></RequireAuth>} />
           <Route path="/billets/:id" element={<RequireAuth><Ticket /></RequireAuth>} />
           <Route path="/admin/programmation" element={<RequireAuth admin><AdminProgramming /></RequireAuth>} />
+          <Route path="/admin/reservations" element={<RequireAuth admin><AdminBookings /></RequireAuth>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
