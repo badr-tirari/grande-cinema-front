@@ -46,7 +46,7 @@ export default function Register() {
         <input type="password" required minLength={8} autoComplete="new-password" value={form.password}
           onChange={update("password")} />
       </label>
-      <button className="primary" disabled={busy}>{busy ? "Création…" : "Créer mon compte"}</button>
+      <button type="submit" className="primary" disabled={busy}>{busy ? "Création…" : "Créer mon compte"}</button>
       <p className="muted small">
         Déjà inscrit ? <Link to="/connexion" state={location.state}>Se connecter</Link>
       </p>
