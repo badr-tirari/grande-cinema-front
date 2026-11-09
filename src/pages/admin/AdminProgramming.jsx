@@ -25,7 +25,7 @@ export default function AdminProgramming() {
       .catch(setError);
 
   useEffect(() => {
-    load();
+    void load(); // les erreurs sont déjà capturées par .catch(setError)
   }, []);
 
   async function run(action, message) {
@@ -97,7 +97,7 @@ export default function AdminProgramming() {
             <textarea rows="3" value={movieForm.description}
               onChange={(e) => setMovieForm({ ...movieForm, description: e.target.value })} />
           </label>
-          <button className="primary">Ajouter</button>
+          <button type="submit" className="primary">Ajouter</button>
         </form>
 
         <form className="card form" onSubmit={addShowtime}>
@@ -129,7 +129,7 @@ export default function AdminProgramming() {
             </label>
           </div>
           <p className="muted small">La fin est calculée (durée du film + 15 min de nettoyage) ; les chevauchements sont refusés.</p>
-          <button className="primary">Programmer</button>
+          <button type="submit" className="primary">Programmer</button>
         </form>
       </div>
 

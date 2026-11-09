@@ -11,14 +11,14 @@ export default function MyBookings() {
 
   const load = () => api.myBookings().then(setBookings).catch(setError);
   useEffect(() => {
-    load();
+    void load(); // les erreurs sont déjà capturées par .catch(setError)
   }, []);
 
   async function cancel(id) {
     setError(null);
     try {
       await api.cancelBooking(id);
-      load();
+      await load();
     } catch (e) {
       setError(e);
     }
