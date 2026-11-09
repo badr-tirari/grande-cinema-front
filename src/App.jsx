@@ -1,6 +1,8 @@
 import { Navigate, NavLink, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "./auth";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
+import MovieDetail from "./pages/MovieDetail";
 import Register from "./pages/Register";
 
 function RequireAuth({ admin = false, children }) {
@@ -29,6 +31,9 @@ function Header() {
         </span>
       </NavLink>
       <nav>
+        <NavLink to="/" end>
+          À l'affiche
+        </NavLink>
         {user ? (
           <button type="button" className="link-button" onClick={signOut} title={user.email}>
             Déconnexion
@@ -49,6 +54,8 @@ export default function App() {
       <Header />
       <main className="container">
         <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/films/:id" element={<MovieDetail />} />
           <Route path="/connexion" element={<Login />} />
           <Route path="/inscription" element={<Register />} />
           <Route path="*" element={<Navigate to="/" replace />} />
