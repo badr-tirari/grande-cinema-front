@@ -7,6 +7,7 @@ import MyBookings from "./pages/MyBookings";
 import Register from "./pages/Register";
 import ShowtimePage from "./pages/ShowtimePage";
 import Ticket from "./pages/Ticket";
+import AdminProgramming from "./pages/admin/AdminProgramming";
 
 function RequireAuth({ admin = false, children }) {
   const { user, ready } = useAuth();
@@ -38,6 +39,11 @@ function Header() {
           À l'affiche
         </NavLink>
         {user && <NavLink to="/mes-reservations">Mes billets</NavLink>}
+        {user?.role === "ADMIN" && (
+          <>
+            <NavLink to="/admin/programmation">Programmation</NavLink>
+          </>
+        )}
         {user ? (
           <button type="button" className="link-button" onClick={signOut} title={user.email}>
             Déconnexion
@@ -65,6 +71,7 @@ export default function App() {
           <Route path="/inscription" element={<Register />} />
           <Route path="/mes-reservations" element={<RequireAuth><MyBookings /></RequireAuth>} />
           <Route path="/billets/:id" element={<RequireAuth><Ticket /></RequireAuth>} />
+          <Route path="/admin/programmation" element={<RequireAuth admin><AdminProgramming /></RequireAuth>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
